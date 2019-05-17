@@ -13,6 +13,11 @@ public class CardStackBuilder {
 		cards = new Stack<Card>();
 	}
 	
+	CardStackBuilder cards(Stack <Card> cards) {
+		this.cards = cards;
+		return this;
+	}
+	
 	CardStack build() {
 		return new CardStack();
 	}

@@ -3,6 +3,7 @@ package test;
 import java.util.Stack;
 
 import clondike.Card;
+import clondike.CardStack;
 import clondike.Pile;
 
 public class PileBuilder extends CardStackBuilder {
@@ -21,6 +22,18 @@ public class PileBuilder extends CardStackBuilder {
 		this.number++;		
 		if (card.isFaceUp()) {
 				this.numberOfFaceUpCards++;
+		}
+		return this;
+	}
+	
+	public PileBuilder cards(Stack <Card> cards) {
+		this.cards = cards;
+		this.number = this.cards.size();
+		this.numberOfFaceUpCards = 0;
+		for (int i = 0; i < this.cards.size(); i++) {
+			if (this.cards.get(i).isFaceUp()) {
+				this.numberOfFaceUpCards++;
+			}
 		}
 		return this;
 	}

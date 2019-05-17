@@ -32,7 +32,7 @@ public class Pile extends CardStack {
 	}
 	
 	public int numberOfFaceUpCards() {
-		return 0;
+		return numberOfFaceUpCards;
 	}
 	
 	public boolean empty() {
