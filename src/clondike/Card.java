@@ -4,7 +4,7 @@ public class Card {
 	
 	private Number number;
 	private Suite suite;
-	private boolean faceUp;
+	private Boolean faceUp;
 	
 	public Card(Number number, Suite suite) {
 		this.number = number;
@@ -34,19 +34,19 @@ public class Card {
 	}
 	
 	public Color getColor() {
-		return null;
+		return this.getSuite().getColor();
 	}
 	
 	public String toString() {
-		return null;
+		return this.number.toString() + " de " + this.suite.toString() + ", " + this.faceUp;
 	}
 	
 	public int hashCode() {
-		return 0;
+		return this.number.hashCode() + this.suite.hashCode() + this.faceUp.hashCode();
 	}
 	
 	public boolean equals(Object obj) {
-		return false;
+		return this.hashCode() == obj.hashCode();
 	}
 
 }

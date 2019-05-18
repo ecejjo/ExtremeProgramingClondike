@@ -1,28 +1,24 @@
 package clondike;
 
 public enum Error {
-	EMPTY_STOCK(0, "Empty Stock error."),
-	EMPTY_WASTE(1, "Empty Waste error."),
-	EMPTY_FOUNDATION(2, "Empty Foundation error."),
-	EMPTY_FILE(3, "Empty File error."),
-	NO_EMPTY_STOCK(4, "No empty Stock error."),
-	NO_FIT_FOUNDATION(5, "No fit Foundation error."),
-	NO_FIT_PILE(6, "No fit Pile error."),
-	SAME_PILE(7, "Same Pile error."),
-	NO_ENOUGH_CARDS_PILE(8, "Not enough cards pile.");
+	SUCESS("No error."),
+	EMPTY_STOCK("Empty Stock error."),
+	EMPTY_WASTE("Empty Waste error."),
+	EMPTY_FOUNDATION("Empty Foundation error."),
+	EMPTY_FILE("Empty File error."),
+	NO_EMPTY_STOCK("No empty Stock error."),
+	NO_FIT_FOUNDATION("No fit Foundation error."),
+	NO_FIT_PILE("No fit Pile error."),
+	SAME_PILE("Same Pile error."),
+	NO_ENOUGH_CARDS_PILE("Not enough cards pile.");
 	
-	private int value;
 	private String message;
 	
-	private Error(int value, String message) {
-		this.value = value;
+	private Error(String message) {
 		this.message = message;
 	}
-	
-	Error(String message) {
-	}
-	
+		
 	public String getMessage() {
-		return null;
+		return message;
 	}
 }

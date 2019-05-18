@@ -18,6 +18,10 @@ public class CardStack {
 	}
 	
 	Card pop() {
-		return cards.lastElement();
+		return cards.remove(0);
+	}
+	
+	void push(Card card) {
+		cards.push(card);
 	}
 }
