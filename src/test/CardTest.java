@@ -1,5 +1,6 @@
 package test;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
@@ -21,20 +22,20 @@ class CardTest {
 	void cardIsNextTo(Number card1Number, Number card2Number) {
 		Card card1 = new CardBuilder().number(card1Number).build();
 		Card card2 = new CardBuilder().number(card2Number).build();
-		assertEquals(card2.isNextTo(card1), true);
+		assertEquals(card1.isNextTo(card2), true);
 	}
 
 	@Test
 	void testCardIsNotNextTo() {
-		cardIsNextTo(Number.AS, Number.TWO);
-		cardIsNextTo(Number.FOUR, Number.FIVE);
-		cardIsNextTo(Number.QUEEN, Number.KING);
+		cardIsNotNextTo(Number.AS, Number.TWO);
+		cardIsNotNextTo(Number.FOUR, Number.FIVE);
+		cardIsNotNextTo(Number.QUEEN, Number.KING);
 	}
 	
 	void cardIsNotNextTo(Number card1Number, Number card2Number) {
 		Card card1 = new CardBuilder().number(card1Number).build();
 		Card card2 = new CardBuilder().number(card2Number).build();
-		assertEquals(card2.isNextTo(card1), false);
+		assertFalse(card1.isNextTo(card2));
 	}
 	
 	@Test
@@ -66,7 +67,8 @@ class CardTest {
 	
 	@Test
 	void testCardToString() {
-		assertEquals(new CardBuilder().build().toString(), "To be defined");
+		Card card = new CardBuilder().number(Number.QUEEN).suite(Suite.DIAMONDS).build();
+		assertEquals(card.toString(), "QUEEN of DIAMONDS, false");
 	}
 	
 	@Test
@@ -87,19 +89,15 @@ class CardTest {
 		cardNotEquals(Suite.CLOVERS, Suite.DIAMONDS);
 	}
 	
-	@Test
 	void cardNotEquals(Number number1, Number number2) {
 		Card card1 = new CardBuilder().number(number1).build();
 		Card card2 = new CardBuilder().number(number2).build();
 		assertEquals(card1.equals(card2), false);
 	}
 	
-	@Test
 	void cardNotEquals(Suite suite1, Suite suite2) {
 		Card card1 = new CardBuilder().suite(suite1).build();
 		Card card2 = new CardBuilder().suite(suite2).build();
 		assertEquals(card1.equals(card2), false);
 	}
-
-
 }

@@ -38,7 +38,7 @@ public class Card {
 	}
 	
 	public String toString() {
-		return this.number.toString() + " de " + this.suite.toString() + ", " + this.faceUp;
+		return this.number.toString() + " of " + this.suite.toString() + ", " + this.faceUp;
 	}
 	
 	public int hashCode() {

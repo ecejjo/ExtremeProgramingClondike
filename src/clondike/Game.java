@@ -19,6 +19,13 @@ public class Game {
 		clear();
 	}
 	
+	public Game(Stock stock, Waste waste, List<Pile> piles, Map<Suite, Foundation> foundations) {
+		this.stock = stock;
+		this.waste = waste;
+		this.piles = piles;
+		this.foundations = foundations;
+	}
+	
 	public void clear() {
 		stock = new Stock();
 		waste = new Waste();

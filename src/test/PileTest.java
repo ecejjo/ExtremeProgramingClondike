@@ -36,13 +36,13 @@ public class PileTest {
 	
 	@Test
 	void testPileNotFitsIn() {
-		fitsIn(Number.TWO, Number.AS);
-		fitsIn(Number.FIVE, Number.FOUR);
-		fitsIn(Number.KING, Number.QUEEN);
+		DoesNotFitIn(Number.TWO, Number.AS);
+		DoesNotFitIn(Number.FIVE, Number.FOUR);
+		DoesNotFitIn(Number.KING, Number.QUEEN);
 	}
 	
 	@Test
-	void NotfitsIn(Number number1, Number number2) {
+	void DoesNotFitIn(Number number1, Number number2) {
 		Pile pile = new PileBuilder().card(new CardBuilder().number(number1).build()).build();
 		assertEquals(pile.fitsIn(new CardBuilder().number(number2).build()), false);
 	}
@@ -57,7 +57,7 @@ public class PileTest {
 	@Test
 	void testPileAddToTop() {
 		Card card = new CardBuilder().build();
-		List<Card> cards = new ArrayList<>();;
+		List<Card> cards = new ArrayList<>();
 		cards.add(card);
 		
 		Pile pile = new PileBuilder().build();

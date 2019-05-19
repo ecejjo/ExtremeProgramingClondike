@@ -6,7 +6,8 @@ public class CardStack {
 	
 	protected Stack<Card> cards;
 	
-	public CardStack() {	
+	public CardStack() {
+		cards = new Stack<Card>();
 	}
 	
 	boolean empty() {
