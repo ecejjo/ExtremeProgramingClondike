@@ -70,12 +70,7 @@ class CardTest {
 		Card card = new CardBuilder().number(Number.QUEEN).suite(Suite.DIAMONDS).build();
 		assertEquals("QUEEN of DIAMONDS, false", card.toString());
 	}
-	
-	@Test
-	void testCardHashCode() {
-		assertEquals(123, new CardBuilder().build().hashCode());
-	}
-	
+		
 	@Test
 	void testCardEquals() {
 		Card card1 = new CardBuilder().build();

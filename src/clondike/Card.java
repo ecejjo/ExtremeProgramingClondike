@@ -42,7 +42,11 @@ public class Card {
 	}
 	
 	public int hashCode() {
-		return this.number.hashCode() + this.suite.hashCode() + this.faceUp.hashCode();
+		int hash = 7;
+	    hash = 31 * hash + (this.number == null ? 0 : this.number.hashCode());
+	    hash = 31 * hash + (this.suite == null ? 0 : this.suite.hashCode());
+	    hash = 31 * hash + (this.faceUp == null ? 0 : this.faceUp.hashCode());
+	    return hash;
 	}
 	
 	public boolean equals(Object obj) {

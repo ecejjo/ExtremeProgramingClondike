@@ -18,21 +18,7 @@ public class GameTest {
 	Stack<Card> cards;
 	Stock stock;
 	Game game;
-	
-	@Test
-	void testClear() {
 		
-		// Given
-		Game clearGame = new GameBuilder().build();
-		testMoveFromStockToWaste_SUCCESS();
-		
-		// When
-		game.clear();
-		
-		// Then
-		assertEquals(clearGame.toString(), game.toString());
-	}
-	
 	@Test
 	void testIsFinished_FALSE() {
 		testMoveFromStockToWaste_SUCCESS();
