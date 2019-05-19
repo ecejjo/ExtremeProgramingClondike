@@ -1,6 +1,5 @@
 package clondike;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,11 +18,9 @@ public class Game {
 		clear();
 	}
 	
-	public Game(Stock stock, Waste waste, List<Pile> piles, Map<Suite, Foundation> foundations) {
+	public Game(Stock stock) {
+		this.clear();
 		this.stock = stock;
-		this.waste = waste;
-		this.piles = piles;
-		this.foundations = foundations;
 	}
 	
 	public void clear() {
@@ -54,11 +51,16 @@ public class Game {
 	}
 
 	public Error moveFromWasteToFoundation() {
-		if (waste.peek().isNextTo(foundations.get(waste.peek().getSuite()).cards.firstElement())) {
-			foundations.get(waste.peek().getSuite()).push(waste.pop());
-			return Error.SUCESS;
+		if (foundations.get(waste.peek().getSuite()).cards.empty()) {
+			if (waste.peek().getNumber() != Number.AS ) {
+				return Error.NO_FIT_FOUNDATION;
+			}
 		}
-		return Error.NO_FIT_FOUNDATION;
+		else if ( ! waste.peek().isNextTo(foundations.get(waste.peek().getSuite()).cards.firstElement())) {
+			return Error.NO_FIT_FOUNDATION;
+		}
+		foundations.get(waste.peek().getSuite()).push(waste.pop());
+		return Error.SUCESS;
 	}
 	
 	public Error moveFromWasteToStock() {

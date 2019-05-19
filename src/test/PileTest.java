@@ -18,7 +18,7 @@ public class PileTest {
 	void testPileFlipFirstCard() {
 		Pile pile = new PileBuilder().build();
 		pile.flipFirstCard();
-		assertEquals(pile.getCards().firstElement().isFaceUp(), true);
+		assertEquals(true, pile.getCards().firstElement().isFaceUp());
 	}
 
 	@Test
@@ -31,7 +31,7 @@ public class PileTest {
 	@Test
 	void fitsIn(Number number1, Number number2) {
 		Pile pile = new PileBuilder().card(new CardBuilder().number(number1).build()).build();
-		assertEquals(pile.fitsIn(new CardBuilder().number(number2).build()), true);
+		assertEquals(true, pile.fitsIn(new CardBuilder().number(number2).build()));
 	}
 	
 	@Test
@@ -44,7 +44,7 @@ public class PileTest {
 	@Test
 	void DoesNotFitIn(Number number1, Number number2) {
 		Pile pile = new PileBuilder().card(new CardBuilder().number(number1).build()).build();
-		assertEquals(pile.fitsIn(new CardBuilder().number(number2).build()), false);
+		assertEquals(false, pile.fitsIn(new CardBuilder().number(number2).build()));
 	}
 	
 	@Test
@@ -78,7 +78,7 @@ public class PileTest {
 		pile.addToTop(cards);
 		
 		pile.removeTop(3);
-		assertEquals(pile.empty(), true);
+		assertEquals(true, pile.empty());
 	}
 	
 	@Test
@@ -99,7 +99,7 @@ public class PileTest {
 		Pile pile = new PileBuilder().build();
 		pile.addToTop(cards);
 		
-		assertEquals(pile.numberOfFaceUpCards(), 2);
+		assertEquals(2, pile.numberOfFaceUpCards());
 	}
 
 

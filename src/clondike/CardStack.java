@@ -15,7 +15,7 @@ public class CardStack {
 	}
 	
 	Card peek() {
-		return cards.firstElement();
+		return cards.peek();
 	}
 	
 	Card pop() {

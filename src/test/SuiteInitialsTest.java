@@ -11,21 +11,21 @@ public class SuiteInitialsTest {
 		
 	@Test
 	void testInitialOfHeartsIsRed() {
-		assertEquals(Suite.HEARTS.initials(), "H");
+		assertEquals("R", Suite.HEARTS.initials());
 	}
 
 	@Test
 	void testInitialOfDiamondsIsBlack() {
-		assertEquals(Suite.DIAMONDS.initials(), "D");
+		assertEquals("R", Suite.DIAMONDS.initials());
 	}
 
 	@Test
 	void testInitialOfCloversIsBlack() {
-		assertEquals(Suite.CLOVERS.initials(), "B");
+		assertEquals("B", Suite.CLOVERS.initials());
 	}
 	
 	@Test
 	void testInitialOfPikesIsBlack() {
-		assertEquals(Suite.PIKES.initials(), "P");
+		assertEquals("B", Suite.PIKES.initials());
 	}
 }

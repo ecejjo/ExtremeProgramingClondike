@@ -12,21 +12,21 @@ public class SuiteColorTest {
 		
 	@Test
 	void testColorOfHeartsIsRed() {
-		assertEquals(Suite.HEARTS.getColor(), Color.RED);
+		assertEquals(Color.RED, Suite.HEARTS.getColor());
 	}
 
 	@Test
 	void testColorOfDiamondsIsBlack() {
-		assertEquals(Suite.DIAMONDS.getColor(), Color.BLACK);
+		assertEquals(Color.BLACK, Suite.DIAMONDS.getColor());
 	}
 
 	@Test
 	void testColorOfCloversIsBlack() {
-		assertEquals(Suite.CLOVERS.getColor(), Color.BLACK);
+		assertEquals(Color.BLACK, Suite.CLOVERS.getColor());
 	}
 	
 	@Test
 	void testColorOfPikesIsBlack() {
-		assertEquals(Suite.PIKES.getColor(), Color.RED);
+		assertEquals(Color.RED, Suite.PIKES.getColor());
 	}
 }
