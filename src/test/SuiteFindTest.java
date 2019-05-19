@@ -10,22 +10,22 @@ import clondike.Suite;
 public class SuiteFindTest {
 		
 	@Test
-	void testColorOfHeartsIsRed() {
+	void testFindOfHearts() {
 		assertEquals(Suite.HEARTS.find('H'), Suite.HEARTS);
 	}
 
 	@Test
-	void testColorOfDiamondsIsBlack() {
+	void testFindOfDiamonds() {
 		assertEquals(Suite.DIAMONDS.find('D'), Suite.DIAMONDS);
 	}
 
 	@Test
-	void testColorOfCloversIsBlack() {
+	void testFindOfClovers() {
 		assertEquals(Suite.CLOVERS.find('C'), Suite.CLOVERS);
 	}
 	
 	@Test
-	void testColorOfPikesIsBlack() {
+	void testFindOfPikes() {
 		assertEquals(Suite.PIKES.find('P'), Suite.PIKES);
 	}
 }

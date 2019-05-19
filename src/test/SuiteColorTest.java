@@ -17,7 +17,7 @@ public class SuiteColorTest {
 
 	@Test
 	void testColorOfDiamondsIsBlack() {
-		assertEquals(Color.BLACK, Suite.DIAMONDS.getColor());
+		assertEquals(Color.RED, Suite.DIAMONDS.getColor());
 	}
 
 	@Test
@@ -27,6 +27,6 @@ public class SuiteColorTest {
 	
 	@Test
 	void testColorOfPikesIsBlack() {
-		assertEquals(Color.RED, Suite.PIKES.getColor());
+		assertEquals(Color.BLACK, Suite.PIKES.getColor());
 	}
 }

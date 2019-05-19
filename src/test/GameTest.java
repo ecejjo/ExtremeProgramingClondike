@@ -15,7 +15,6 @@ import clondike.Number;
 
 public class GameTest {
 	
-	Card card;
 	Stack<Card> cards;
 	Stock stock;
 	Game game;
@@ -35,15 +34,9 @@ public class GameTest {
 
 		// Given
 		cards = new Stack<>();
-
-		card = new CardBuilder().suite(Suite.CLOVERS).number(Number.FOUR).build();
-		cards.add(card);
-
-		card = new CardBuilder().suite(Suite.DIAMONDS).number(Number.EIGHT).build();
-		cards.add(card);
-		
-		card = new CardBuilder().suite(Suite.CLOVERS).number(Number.AS).build();
-		cards.add(card);
+		cards.add(new CardBuilder().suite(Suite.CLOVERS).number(Number.FOUR).build());
+		cards.add(new CardBuilder().suite(Suite.DIAMONDS).number(Number.EIGHT).build());
+		cards.add(new CardBuilder().suite(Suite.CLOVERS).number(Number.AS).build());
 
 		stock = new StockBuilder().cards(cards).build();
 		game = new GameBuilder().stock(stock).build();
@@ -57,12 +50,8 @@ public class GameTest {
 
 		// Given
 		cards = new Stack<>();
-
-		card = new CardBuilder().suite(Suite.CLOVERS).number(Number.AS).build();
-		cards.add(card);
-
-		card = new CardBuilder().suite(Suite.CLOVERS).number(Number.AS).build();
-		cards.add(card);
+		cards.add(new CardBuilder().suite(Suite.CLOVERS).number(Number.AS).build());
+		cards.add(new CardBuilder().suite(Suite.CLOVERS).number(Number.AS).build());
 
 		stock = new StockBuilder().cards(cards).build();
 		game = new GameBuilder().stock(stock).build();
@@ -86,15 +75,9 @@ public class GameTest {
 
 		// Given
 		cards = new Stack<>();
-
-		card = new CardBuilder().suite(Suite.CLOVERS).number(Number.FOUR).build();
-		cards.add(card);
-
-		card = new CardBuilder().suite(Suite.DIAMONDS).number(Number.EIGHT).build();
-		cards.add(card);
-		
-		card = new CardBuilder().suite(Suite.CLOVERS).number(Number.TWO).build();
-		cards.add(card);
+		cards.add(new CardBuilder().suite(Suite.CLOVERS).number(Number.FOUR).build());
+		cards.add(new CardBuilder().suite(Suite.DIAMONDS).number(Number.EIGHT).build());
+		cards.add(new CardBuilder().suite(Suite.CLOVERS).number(Number.TWO).build());
 
 		stock = new StockBuilder().cards(cards).build();
 		game = new GameBuilder().stock(stock).build();

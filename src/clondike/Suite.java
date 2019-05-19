@@ -1,10 +1,10 @@
 package clondike;
 
 public enum Suite {
-	HEARTS(Color.RED, 'R'),
-	DIAMONDS(Color.RED, 'R'),
-	CLOVERS(Color.BLACK, 'B'),
-	PIKES(Color.BLACK, 'B');
+	HEARTS(Color.RED, 'H'),
+	DIAMONDS(Color.RED, 'D'),
+	CLOVERS(Color.BLACK, 'C'),
+	PIKES(Color.BLACK, 'P');
 	
 	private Color color;
 	private char initial;
@@ -18,7 +18,7 @@ public enum Suite {
 	}
 	
 	public char[] initials() {
-		char [] charArray = null;
+		char [] charArray = new char[4];
 		charArray[0] = Suite.HEARTS.initial;
 		charArray[1] = Suite.DIAMONDS.initial;
 		charArray[2] = Suite.CLOVERS.initial;
@@ -27,7 +27,18 @@ public enum Suite {
 	}
 	
 	public Suite find(char initial) {
-		return this.find(initial);
+		switch (initial) {
+		case 'H':
+			return Suite.HEARTS;
+		case 'D':
+			return Suite.DIAMONDS;
+		case 'C':
+			return Suite.CLOVERS;
+		case 'P':
+			return Suite.PIKES;
+		default:
+			return null;
+		}
 	}
 	
 	public Color getColor() {

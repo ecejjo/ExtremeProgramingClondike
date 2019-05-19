@@ -1,11 +1,11 @@
 package test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import clondike.Pile;
 import clondike.Suite;
@@ -16,9 +16,10 @@ public class PileTest {
 	
 	@Test
 	void testPileFlipFirstCard() {
-		Pile pile = new PileBuilder().build();
+		Card card = new CardBuilder().build();
+		Pile pile = new PileBuilder().card(card).build();
 		pile.flipFirstCard();
-		assertEquals(true, pile.getCards().firstElement().isFaceUp());
+		assertEquals(true, pile.getCards().peek().isFaceUp());
 	}
 
 	@Test
@@ -28,7 +29,6 @@ public class PileTest {
 		fitsIn(Number.QUEEN, Number.KING);
 	}
 
-	@Test
 	void fitsIn(Number number1, Number number2) {
 		Pile pile = new PileBuilder().card(new CardBuilder().number(number1).build()).build();
 		assertEquals(true, pile.fitsIn(new CardBuilder().number(number2).build()));
@@ -41,7 +41,6 @@ public class PileTest {
 		DoesNotFitIn(Number.KING, Number.QUEEN);
 	}
 	
-	@Test
 	void DoesNotFitIn(Number number1, Number number2) {
 		Pile pile = new PileBuilder().card(new CardBuilder().number(number1).build()).build();
 		assertEquals(false, pile.fitsIn(new CardBuilder().number(number2).build()));
@@ -57,7 +56,7 @@ public class PileTest {
 	@Test
 	void testPileAddToTop() {
 		Card card = new CardBuilder().build();
-		List<Card> cards = new ArrayList<>();
+		List<Card> cards = new ArrayList<Card>();
 		cards.add(card);
 		
 		Pile pile = new PileBuilder().build();
@@ -101,6 +100,4 @@ public class PileTest {
 		
 		assertEquals(2, pile.numberOfFaceUpCards());
 	}
-
-
 }

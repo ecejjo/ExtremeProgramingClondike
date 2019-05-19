@@ -1,7 +1,7 @@
 package test;
 
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import org.junit.jupiter.api.Test;
 
@@ -10,22 +10,23 @@ import clondike.Suite;
 public class SuiteInitialsTest {
 		
 	@Test
-	void testInitialOfHeartsIsRed() {
-		assertEquals("R", Suite.HEARTS.initials());
+	void testInitialOfHeartsIsH() {
+		assertArrayEquals(new char[] {'H', 'D', 'C', 'P'}, Suite.HEARTS.initials());
 	}
 
 	@Test
-	void testInitialOfDiamondsIsBlack() {
-		assertEquals("R", Suite.DIAMONDS.initials());
+	void testInitialOfDiamondsIsD() {
+		assertArrayEquals(new char[] {'H', 'D', 'C', 'P'}, Suite.DIAMONDS.initials());
+
 	}
 
 	@Test
-	void testInitialOfCloversIsBlack() {
-		assertEquals("B", Suite.CLOVERS.initials());
+	void testInitialOfCloversIsC() {
+		assertArrayEquals(new char[] {'H', 'D', 'C', 'P'}, Suite.CLOVERS.initials());
 	}
 	
 	@Test
-	void testInitialOfPikesIsBlack() {
-		assertEquals("B", Suite.PIKES.initials());
+	void testInitialOfPikesIsP() {
+		assertArrayEquals(new char[] {'H', 'D', 'C', 'P'}, Suite.PIKES.initials());
 	}
 }
