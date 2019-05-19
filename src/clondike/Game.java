@@ -34,10 +34,15 @@ public class Game {
 	}
 	
 	public boolean isFinished() {
-		return ((foundations.get(Suite.CLOVERS).cards.firstElement().getNumber() == Number.KING) &
-				(foundations.get(Suite.DIAMONDS).cards.firstElement().getNumber() == Number.KING) &
-				(foundations.get(Suite.HEARTS).cards.firstElement().getNumber() == Number.KING) &
-				(foundations.get(Suite.PIKES).cards.firstElement().getNumber() == Number.KING));
+		for (int i = 0; i < Suite.values().length; i++) {
+			if (foundations.get(Suite.values()[i]).empty()) {
+				return false;
+			}
+			if (foundations.get(Suite.values()[i]).cards.firstElement().getNumber() != Number.KING) {
+				return false;
+			}
+		}
+		return true;
 	}
 	
 	public Error moveFromStockToWaste() {

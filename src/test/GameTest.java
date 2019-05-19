@@ -21,12 +21,22 @@ public class GameTest {
 	
 	@Test
 	void testClear() {
-		assertTrue(false);
+		
+		// Given
+		Game clearGame = new GameBuilder().build();
+		testMoveFromStockToWaste_SUCCESS();
+		
+		// When
+		game.clear();
+		
+		// Then
+		assertEquals(clearGame.toString(), game.toString());
 	}
 	
 	@Test
-	void testIsFinished() {
-		assertTrue(false);
+	void testIsFinished_FALSE() {
+		testMoveFromStockToWaste_SUCCESS();
+		assertFalse(game.isFinished());
 	}
 	
 	@Test
