@@ -107,10 +107,10 @@ public class GameTest {
 	
 	@Test
 	void testMoveFromWasteToStock_EMPTY_WASTE() {
+
 		// Given
-		cards = new Stack<>();
-		waste = new WasteBuilder().cards(cards).build();
-		game = new GameBuilder().waste(waste).build();
+		this.game = new GameBuilder().build();
+		this.waste = this.game.getWaste();
 		
 		// When, then
 		assertEquals(Error.EMPTY_WASTE, game.moveFromWasteToStock());
