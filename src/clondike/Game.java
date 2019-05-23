@@ -108,14 +108,35 @@ public class Game {
 	}
 	
 	public Error moveFromFoundationToPile(Suite suite, int pileIndex) {
-		if (foundations.get(suite).peek().isNextTo(piles.get(pileIndex).peek())) {
+		if (this.foundations.get(suite).empty()) {
+			return Error.EMPTY_FOUNDATION;
+		}
+		if (this.piles.get(pileIndex).empty()) {
+			piles.get(pileIndex).push(foundations.get(suite).pop());
+			return Error.SUCESS;
+		}
+		if (piles.get(pileIndex).peek().getColor() == (foundations.get(suite).peek().getColor())) {
+			return Error.NO_FIT_PILE;
+		}
+		if (piles.get(pileIndex).peek().isNextTo(foundations.get(suite).peek())) {
 			piles.get(pileIndex).push(foundations.get(suite).pop());
 			return Error.SUCESS;
 		}
 		return Error.NO_FIT_PILE;
 	}
+	
 	public Error moveFromPileToFoundation(int pileIndex, Suite suite) {
-		return null;
+		if (this.piles.get(pileIndex).empty()) {
+			return Error.EMPTY_PILE;
+		}
+		if (this.piles.get(pileIndex).peek().getSuite() != this.foundations.get(suite).peek().getSuite()) {
+			return Error.NO_FIT_FOUNDATION;
+		}
+		if ( ! this.piles.get(pileIndex).peek().isNextTo(this.foundations.get(suite).peek())) {
+			return Error.NO_FIT_FOUNDATION;
+		}
+		this.foundations.get(suite).push(this.piles.get(pileIndex).pop());
+		return Error.SUCESS;
 	}
 	public Error moveFromPileToPile(int orginIndex, int destinationIndex) {
 		return null;

@@ -5,7 +5,7 @@ public enum Error {
 	EMPTY_STOCK("Empty Stock error."),
 	EMPTY_WASTE("Empty Waste error."),
 	EMPTY_FOUNDATION("Empty Foundation error."),
-	EMPTY_FILE("Empty File error."),
+	EMPTY_PILE("Empty Pile error."),
 	NO_EMPTY_STOCK("No empty Stock error."),
 	NO_FIT_FOUNDATION("No fit Foundation error."),
 	NO_FIT_PILE("No fit Pile error."),

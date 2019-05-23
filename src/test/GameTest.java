@@ -143,85 +143,104 @@ public class GameTest {
 	
 	@Test
 	void testMoveFromFoundationToPile_SUCESS() {
-		// Given
-		this.cards = new Stack<>();
-		this.cards.add(new CardBuilder().suite(Suite.CLOVERS).number(Number.FOUR).build());
 
+		// Given
 		this.game = new GameBuilder().build();
 		this.foundations = this.game.getFoundations();
-		this.foundations.get(Suite.CLOVERS).push(this.cards.get(0));
-		
-		this.piles = this.game.getPiles();
-		for (int i = 0; i < Suite.values().length + 1; i++) {
-			this.piles.add(new PileBuilder().build());
-		}
+		this.foundations.get(Suite.CLOVERS).push(new CardBuilder().suite(Suite.CLOVERS).number(Number.FOUR).build());
 		
 		// When, then
-		assertEquals(Error.SUCESS, game.moveFromFoundationToPile(Suite.CLOVERS, Suite.CLOVERS.ordinal()));
+		assertEquals(Error.SUCESS, game.moveFromFoundationToPile(Suite.CLOVERS, 1));
+	}
+
+	@Test
+	void testMoveFromFoundationToPile_EMPTY_FOUNDATION() {
+
+		// Given
+		this.game = new GameBuilder().build();
+		
+		// When, then
+		assertEquals(Error.EMPTY_FOUNDATION, game.moveFromFoundationToPile(Suite.CLOVERS, 1));
+	}
+
+	@Test
+	void testMoveFromFoundationToPile_NO_FIT_PILE_bySuite() {
+
+		// Given
+		this.game = new GameBuilder().build();
+		
+		this.foundations = this.game.getFoundations();
+		this.foundations.get(Suite.CLOVERS).push(new CardBuilder().suite(Suite.CLOVERS).number(Number.FOUR).build());
+		
+		this.piles = this.game.getPiles();	
+		this.piles.get(1).push(new CardBuilder().suite(Suite.PIKES).number(Number.THREE).build());
+		
+		// When, then
+		assertEquals(Error.NO_FIT_PILE, game.moveFromFoundationToPile(Suite.CLOVERS, 1));
 	}
 	
 	@Test
-	void testMoveFromFoundationToPile_NO_FIT_PILE() {
+	void testMoveFromFoundationToPile_NO_FIT_PILE_byNumber() {
+
 		// Given
-		this.cards = new Stack<>();
-		this.cards.add(new CardBuilder().suite(Suite.CLOVERS).number(Number.FOUR).build());
+		this.game = new GameBuilder().build();
 		
-		this.foundations = new HashMap<Suite, Foundation>();
-		this.foundations.get(Suite.CLOVERS).push(this.cards.get(0));
-		this.game = new GameBuilder().foundations(this.foundations).build();
+		this.foundations = this.game.getFoundations();
+		this.foundations.get(Suite.CLOVERS).push(new CardBuilder().suite(Suite.CLOVERS).number(Number.EIGHT).build());
 		
-		this.piles = this.game.getPiles();		
-		for (int i = 0; i < Suite.values().length + 1; i++) {
-			this.piles.add(new PileBuilder().build());
-		}
-		
-		this.piles.get(Suite.CLOVERS.ordinal()).push(new CardBuilder().suite(Suite.DIAMONDS).number(Number.THREE).build());
+		this.piles = this.game.getPiles();	
+		this.piles.get(1).push(new CardBuilder().suite(Suite.DIAMONDS).number(Number.THREE).build());
 		
 		// When, then
-		assertEquals(Error.NO_FIT_PILE, game.moveFromFoundationToPile(Suite.CLOVERS, Suite.CLOVERS.ordinal()));
+		assertEquals(Error.NO_FIT_PILE, game.moveFromFoundationToPile(Suite.CLOVERS, 1));
 	}
-
 	
 	@Test
 	void testMoveFromPileToFoundation_SUCCESS() {
+
 		// Given
-		this.cards = new Stack<>();
-		this.cards.add(new CardBuilder().suite(Suite.CLOVERS).number(Number.FOUR).build());
-		
-		this.foundations = new HashMap<Suite, Foundation>();
-		this.foundations.get(Suite.CLOVERS).push(this.cards.get(0));
-		this.game = new GameBuilder().foundations(this.foundations).build();
-		
-		this.piles = this.game.getPiles();		
-		for (int i = 0; i < Suite.values().length + 1; i++) {
-			this.piles.add(new PileBuilder().build());
-		}
-		
-		this.piles.get(Suite.CLOVERS.ordinal()).push(new CardBuilder().suite(Suite.DIAMONDS).number(Number.THREE).build());
-		
+		this.game = new GameBuilder().build();
+
+		this.piles = this.game.getPiles();
+		this.piles.get(1).push(new CardBuilder().suite(Suite.CLOVERS).number(Number.FOUR).build());
+
+		this.foundations = this.game.getFoundations();
+		this.foundations.get(Suite.CLOVERS).push(new CardBuilder().suite(Suite.CLOVERS).number(Number.THREE).build());
+				
 		// When, then
-		assertEquals(Error.SUCESS, game.moveFromPileToFoundation(Suite.CLOVERS.ordinal(), Suite.CLOVERS));
+		assertEquals(Error.SUCESS, game.moveFromPileToFoundation(1, Suite.CLOVERS));
 	}
 
 	@Test
-	void testMoveFromPileToFoundation_NO_FIT_FOUNDATION() {
+	void testMoveFromPileToFoundation_NO_FIT_FOUNDATION_bySuite() {
+
 		// Given
-		this.cards = new Stack<>();
-		this.cards.add(new CardBuilder().suite(Suite.CLOVERS).number(Number.FOUR).build());
-		
-		this.foundations = new HashMap<Suite, Foundation>();
-		this.foundations.get(Suite.CLOVERS).push(this.cards.get(0));
-		this.game = new GameBuilder().foundations(this.foundations).build();
-		
-		this.piles = this.game.getPiles();		
-		for (int i = 0; i < Suite.values().length + 1; i++) {
-			this.piles.add(new PileBuilder().build());
-		}
-		
-		this.piles.get(Suite.CLOVERS.ordinal()).push(new CardBuilder().suite(Suite.DIAMONDS).number(Number.THREE).build());
+		this.game = new GameBuilder().build();
+
+		this.piles = this.game.getPiles();
+		this.piles.get(1).push(new CardBuilder().suite(Suite.CLOVERS).number(Number.FOUR).build());
+
+		this.foundations = this.game.getFoundations();
+		this.foundations.get(Suite.CLOVERS).push(new CardBuilder().suite(Suite.DIAMONDS).number(Number.THREE).build());
 		
 		// When, then
-		assertEquals(Error.NO_FIT_FOUNDATION, game.moveFromPileToFoundation(Suite.CLOVERS.ordinal(), Suite.CLOVERS));
+		assertEquals(Error.NO_FIT_FOUNDATION, game.moveFromPileToFoundation(1, Suite.CLOVERS));
+	}
+
+	@Test
+	void testMoveFromPileToFoundation_NO_FIT_FOUNDATION_byNumber() {
+
+		// Given
+		this.game = new GameBuilder().build();
+
+		this.piles = this.game.getPiles();
+		this.piles.get(1).push(new CardBuilder().suite(Suite.CLOVERS).number(Number.SEVEN).build());
+
+		this.foundations = this.game.getFoundations();
+		this.foundations.get(Suite.CLOVERS).push(new CardBuilder().suite(Suite.CLOVERS).number(Number.THREE).build());
+		
+		// When, then
+		assertEquals(Error.NO_FIT_FOUNDATION, game.moveFromPileToFoundation(1, Suite.CLOVERS));
 	}
 
 	@Test
