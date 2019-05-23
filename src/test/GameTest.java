@@ -97,10 +97,9 @@ public class GameTest {
 	void testMoveFromWasteToStock_SUCCESS() {
 
 		// Given
-		cards = new Stack<>();
-		cards.add(new CardBuilder().suite(Suite.CLOVERS).number(Number.FOUR).build());
-		waste = new WasteBuilder().cards(cards).build();
-		game = new GameBuilder().waste(waste).build();
+		this.game = new GameBuilder().build();
+		this.waste = this.game.getWaste();
+		this.waste.push(new CardBuilder().suite(Suite.CLOVERS).number(Number.FOUR).build());
 		
 		// When, then
 		assertEquals(Error.SUCESS, game.moveFromWasteToStock());
