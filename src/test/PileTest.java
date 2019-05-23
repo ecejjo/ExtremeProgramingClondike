@@ -64,13 +64,13 @@ public class PileTest {
 	}
 
 	@Test
-	void testPileFitsIn() {
-		fitsIn(Number.AS, Number.TWO);
-		fitsIn(Number.FIVE, Number.SIX);
-		fitsIn(Number.QUEEN, Number.KING);
+	void testPileFitsInEmpty() {
+		fitsInEmpty(Number.AS, Number.TWO);
+		fitsInEmpty(Number.FIVE, Number.SIX);
+		fitsInEmpty(Number.QUEEN, Number.KING);
 	}
 
-	void fitsIn(Number number1, Number number2) {
+	void fitsInEmpty(Number number1, Number number2) {
 		Pile pile = new PileBuilder().card(new CardBuilder().number(number1).build()).build();
 		assertEquals(true, pile.fitsIn(new CardBuilder().number(number2).build()));
 	}

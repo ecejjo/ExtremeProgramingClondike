@@ -4,7 +4,7 @@ public class Foundation extends CardStack {
 	
 	private Suite suite;
 	
-	Foundation(Suite suite) {
+	public Foundation(Suite suite) {
 		this.suite = suite;
 	}
 	

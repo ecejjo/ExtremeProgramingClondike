@@ -18,7 +18,13 @@ public class GameTest {
 	Stack<Card> cards;
 	Stock stock;
 	Game game;
-		
+
+	@Test
+	void testIsFinished_TRUE() {
+		Game game = new CompletedGameBuilder().build();
+		assertTrue(game.isFinished());
+	}
+
 	@Test
 	void testIsFinished_FALSE() {
 		testMoveFromStockToWaste_SUCCESS();

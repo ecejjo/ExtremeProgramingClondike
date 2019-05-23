@@ -34,11 +34,11 @@ public class Game {
 	}
 	
 	public boolean isFinished() {
-		for (int i = 0; i < Suite.values().length; i++) {
-			if (foundations.get(Suite.values()[i]).empty()) {
+		for (Suite suite : Suite.values()) {
+			if (foundations.get(suite).empty()) {
 				return false;
 			}
-			if (foundations.get(Suite.values()[i]).cards.firstElement().getNumber() != Number.KING) {
+			if (foundations.get(suite).cards.lastElement().getNumber() != Number.KING) {
 				return false;
 			}
 		}
@@ -100,7 +100,7 @@ public class Game {
 		return null;
 	}
 	
-	Map<Suite, Foundation> getFoundations() {
+	public Map<Suite, Foundation> getFoundations() {
 		return foundations;
 	}
 	
