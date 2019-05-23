@@ -9,12 +9,15 @@ public class Foundation extends CardStack {
 	}
 	
 	boolean isComplete() {
-		return cards.peek().getNumber() == Number.KING;
+		if (this.empty()) {
+			return false;
+		}
+		return this.peek().getNumber() == Number.KING;
 	}
 	
 	boolean fitsIn(Card card) {
 		return ((this.getSuit() == card.getSuite()) &
-				(card.isNextTo(cards.peek())));
+				(card.isNextTo(this.peek())));
 	}
 	
 	Suite getSuit() {

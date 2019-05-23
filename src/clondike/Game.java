@@ -38,7 +38,7 @@ public class Game {
 			if (foundations.get(suite).empty()) {
 				return false;
 			}
-			if (foundations.get(suite).cards.lastElement().getNumber() != Number.KING) {
+			if ( ! foundations.get(suite).isComplete()) {
 				return false;
 			}
 		}
