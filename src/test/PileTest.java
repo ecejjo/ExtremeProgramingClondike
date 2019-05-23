@@ -1,7 +1,8 @@
 package test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +15,45 @@ import clondike.Number;
 
 public class PileTest {
 	
-	// TODO: falta probar aquí los métodos heredados de CardStack
+	@Test
+	public void testEmpty() {
+		Pile pile = new PileBuilder().build();
+		assertTrue(pile.empty());
+		
+		Card card = new CardBuilder().build();
+		pile.push(card);
+		
+		assertFalse(pile.empty());
+	}
+	
+	@Test
+	public void testPush() {
+		Pile pile = new PileBuilder().build();		
+		Card card = new CardBuilder().build();
+		
+		pile.push(card);
+		assertEquals(card, pile.peek());
+	}
+
+	@Test
+	public void testPop() {
+		Pile pile = new PileBuilder().build();		
+		Card card = new CardBuilder().build();
+		
+		pile.push(card);
+		assertEquals(card, pile.pop());
+		assertTrue(pile.empty());
+	}
+
+	@Test
+	public void testPeek() {
+		Pile pile = new PileBuilder().build();		
+		Card card = new CardBuilder().build();
+		
+		pile.push(card);
+		assertEquals(card, pile.peek());
+		assertFalse(pile.empty());
+	}
 	
 	@Test
 	void testPileFlipFirstCard() {
