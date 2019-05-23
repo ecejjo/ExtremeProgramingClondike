@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Stack;
 
+import test.PileBuilder;
+
 public class Game {
 	
 	private static final int NUMBER_OF_CARDS_FROM_STOCK_TO_WASTE = 3;
@@ -28,13 +30,18 @@ public class Game {
 	}
 	
 	public void clear() {
-		stock = new Stock();
-		waste = new Waste();
-		foundations = new HashMap<Suite, Foundation>();
-		foundations.put(Suite.CLOVERS, new Foundation(Suite.CLOVERS));
-		foundations.put(Suite.DIAMONDS, new Foundation(Suite.DIAMONDS));
-		foundations.put(Suite.HEARTS, new Foundation(Suite.HEARTS));
-		foundations.put(Suite.PIKES, new Foundation(Suite.PIKES));		
+		this.stock = new Stock();
+		this.waste = new Waste();
+		
+		this.foundations = new HashMap<Suite, Foundation>();
+		for (int i = 0; i < Suite.values().length; i++) {
+			this.foundations.put(Suite.values()[i], new Foundation(Suite.values()[i]));
+		}
+		
+		this.piles = new ArrayList<Pile>();
+		for (int i = 0; i < NUMBER_OF_PILES; i++) {
+			this.piles.add(new Pile(i, new Stack<Card>()));
+		}
 	}
 	
 	public boolean isFinished() {
@@ -103,8 +110,9 @@ public class Game {
 	public Error moveFromFoundationToPile(Suite suite, int pileIndex) {
 		if (foundations.get(suite).peek().isNextTo(piles.get(pileIndex).peek())) {
 			piles.get(pileIndex).push(foundations.get(suite).pop());
+			return Error.SUCESS;
 		}
-		return null;
+		return Error.NO_FIT_PILE;
 	}
 	public Error moveFromPileToFoundation(int pileIndex, Suite suite) {
 		return null;
