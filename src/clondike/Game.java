@@ -18,9 +18,10 @@ public class Game {
 		clear();
 	}
 	
-	public Game(Stock stock) {
+	public Game(Stock stock, Waste waste) {
 		this.clear();
 		this.stock = stock;
+		this.waste = waste;
 	}
 	
 	public void clear() {
@@ -69,8 +70,15 @@ public class Game {
 	}
 	
 	public Error moveFromWasteToStock() {
-		return null;
+		if (this.getWaste().cards.empty()) {
+			return Error.EMPTY_WASTE;
+		}
+		for (int i = 0; i < this.getWaste().cards.size(); i++) {
+			this.stock.push(this.waste.pop());
+		}
+		return Error.SUCESS;
 	}
+	
 	public Error moveFromWasteToPile(int pileIndex) {
 		if (waste.peek().isNextTo(piles.get(pileIndex).peek())) {
 			piles.get(pileIndex).push(waste.pop());
@@ -93,15 +101,15 @@ public class Game {
 	}
 	
 	Stock getStock() {
-		return null;
+		return this.stock;
 	}
 	
 	Waste getWaste() {
-		return null;
+		return this.waste;
 	}
 	
 	public Map<Suite, Foundation> getFoundations() {
-		return foundations;
+		return this.foundations;
 	}
 	
 	List<Pile> getPiles() {

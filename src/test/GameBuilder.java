@@ -44,6 +44,6 @@ public class GameBuilder {
 	}
 
 	Game build() {
-		return new Game(this.stock);
+		return new Game(this.stock, this.waste);
 	}
 }

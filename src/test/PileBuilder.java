@@ -38,7 +38,6 @@ public class PileBuilder extends CardStackBuilder {
 	}
 	
 	Pile build() {
-		Pile pile = new Pile(this.number, this.cards);
-		return pile;
+		return new Pile(this.number, this.cards);
 	}
 }

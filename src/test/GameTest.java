@@ -11,12 +11,14 @@ import clondike.Error;
 import clondike.Game;
 import clondike.Stock;
 import clondike.Suite;
+import clondike.Waste;
 import clondike.Number;
 
 public class GameTest {
 	
 	Stack<Card> cards;
 	Stock stock;
+	Waste waste;
 	Game game;
 
 	@Test
@@ -88,4 +90,48 @@ public class GameTest {
 		// When, then
 		assertEquals(Error.NO_FIT_FOUNDATION, game.moveFromWasteToFoundation());
 	}
+	
+	@Test
+	void testMoveFromWasteToStock_SUCCESS() {
+
+		// Given
+		cards = new Stack<>();
+		cards.add(new CardBuilder().suite(Suite.CLOVERS).number(Number.FOUR).build());
+		waste = new WasteBuilder().cards(cards).build();
+		game = new GameBuilder().waste(waste).build();
+		
+		// When, then
+		assertEquals(Error.SUCESS, game.moveFromWasteToStock());
+	}
+	
+	@Test
+	void testMoveFromWasteToStock_EMPTY_WASTE() {
+		// Given
+		cards = new Stack<>();
+		waste = new WasteBuilder().cards(cards).build();
+		game = new GameBuilder().waste(waste).build();
+		
+		// When, then
+		assertEquals(Error.EMPTY_WASTE, game.moveFromWasteToStock());
+	}
+	
+	@Test
+	void testMoveFromWasteToPile() {
+	}
+	
+	@Test
+	void testMoveFromFoundationToPile() {
+	}
+	
+	@Test
+	void testMoveFromPileToFoundation() {
+	}
+	
+	@Test
+	void testMoveFromPileToPile() {
+	}
+
+
+
+
 }
