@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Stack;
 
 import clondike.Card;
@@ -13,11 +15,13 @@ import clondike.Stock;
 import clondike.Suite;
 import clondike.Waste;
 import clondike.Number;
+import clondike.Pile;
 
 public class GameTest {
 	
 	Stack<Card> cards;
 	Stock stock;
+	List<Pile> piles;
 	Waste waste;
 	Game game;
 
@@ -116,8 +120,35 @@ public class GameTest {
 	}
 	
 	@Test
-	void testMoveFromWasteToPile() {
+	void testMoveFromWasteToPile_SUCCESS() {
+		// Given
+		this.cards = new Stack<>();
+		this.cards.add(new CardBuilder().suite(Suite.CLOVERS).number(Number.AS).build());
+		this.waste = new WasteBuilder().cards(this.cards).build();
+		
+		this.game = new GameBuilder().waste(this.waste).build();
+		this.piles = this.game.getPiles();
+		
+		for (int i = 0; i < Suite.CLOVERS.ordinal() + 1; i++) {
+			this.piles.add(new PileBuilder().build());
+		}
+		
+		// When, then
+		assertEquals(Error.SUCESS, game.moveFromWasteToPile(Suite.CLOVERS.ordinal()));
 	}
+	
+	@Test
+	void testMoveFromWasteToPile_NO_FIT_PILE() {
+		// Given
+		cards = new Stack<>();
+		cards.add(new CardBuilder().suite(Suite.CLOVERS).number(Number.FOUR).build());
+		waste = new WasteBuilder().cards(cards).build();
+		game = new GameBuilder().waste(waste).build();
+		
+		// When, then
+		assertEquals(Error.NO_FIT_PILE, game.moveFromWasteToPile(Suite.DIAMONDS.ordinal()));
+	}
+
 	
 	@Test
 	void testMoveFromFoundationToPile() {
