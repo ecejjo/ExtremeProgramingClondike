@@ -81,13 +81,12 @@ public class GameTest {
 	void testMoveFromWasteToFoundation_NO_FIT_FOUNDATION() {
 
 		// Given
-		cards = new Stack<>();
-		cards.add(new CardBuilder().suite(Suite.CLOVERS).number(Number.FOUR).build());
-		cards.add(new CardBuilder().suite(Suite.DIAMONDS).number(Number.EIGHT).build());
-		cards.add(new CardBuilder().suite(Suite.CLOVERS).number(Number.TWO).build());
-
-		stock = new StockBuilder().cards(cards).build();
-		game = new GameBuilder().stock(stock).build();
+		this.game = new GameBuilder().build();
+		this.stock = this.game.getStock();
+		this.stock.push(new CardBuilder().suite(Suite.CLOVERS).number(Number.FOUR).build());
+		this.stock.push(new CardBuilder().suite(Suite.DIAMONDS).number(Number.EIGHT).build());
+		this.stock.push(new CardBuilder().suite(Suite.CLOVERS).number(Number.TWO).build());
+		
 		game.moveFromStockToWaste();
 		
 		// When, then
