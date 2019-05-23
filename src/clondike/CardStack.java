@@ -10,19 +10,19 @@ public class CardStack {
 		cards = new Stack<Card>();
 	}
 	
-	boolean empty() {
+	public boolean empty() {
 		return cards.isEmpty();
 	}
 	
-	Card peek() {
+	public Card peek() {
 		return cards.peek();
 	}
 	
-	Card pop() {
+	public Card pop() {
 		return cards.remove(0);
 	}
 	
-	void push(Card card) {
+	public void push(Card card) {
 		cards.push(card);
 	}
 }

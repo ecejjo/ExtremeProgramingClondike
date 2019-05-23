@@ -14,6 +14,8 @@ import clondike.Number;
 
 public class PileTest {
 	
+	// TODO: falta probar aquí los métodos heredados de CardStack
+	
 	@Test
 	void testPileFlipFirstCard() {
 		Card card = new CardBuilder().build();
