@@ -43,15 +43,13 @@ public class GameTest {
 	
 	@Test
 	void testMoveFromStockToWaste_SUCCESS() {
-
+		
 		// Given
-		cards = new Stack<>();
-		cards.add(new CardBuilder().suite(Suite.CLOVERS).number(Number.FOUR).build());
-		cards.add(new CardBuilder().suite(Suite.DIAMONDS).number(Number.EIGHT).build());
-		cards.add(new CardBuilder().suite(Suite.CLOVERS).number(Number.AS).build());
-
-		stock = new StockBuilder().cards(cards).build();
-		game = new GameBuilder().stock(stock).build();
+		this.game = new GameBuilder().build();
+		this.stock = this.game.getStock();
+		this.stock.push(new CardBuilder().suite(Suite.CLOVERS).number(Number.FOUR).build());
+		this.stock.push(new CardBuilder().suite(Suite.DIAMONDS).number(Number.EIGHT).build());
+		this.stock.push(new CardBuilder().suite(Suite.CLOVERS).number(Number.AS).build());
 		
 		// When, then
 		assertEquals(Error.SUCESS, game.moveFromStockToWaste());
