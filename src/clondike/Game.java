@@ -6,8 +6,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Stack;
 
-import test.PileBuilder;
-
 public class Game {
 	
 	private static final int NUMBER_OF_CARDS_FROM_STOCK_TO_WASTE = 3;
@@ -20,13 +18,6 @@ public class Game {
 	
 	public Game() {
 		clear();
-	}
-	
-	public Game(Stock stock, Waste waste) {
-		this.clear();
-		this.stock = stock;
-		this.waste = waste;
-		this.piles = new ArrayList<Pile>();
 	}
 	
 	public void clear() {

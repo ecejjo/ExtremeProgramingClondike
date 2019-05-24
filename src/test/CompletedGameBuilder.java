@@ -1,9 +1,6 @@
 package test;
 
-import java.util.HashMap;
 import java.util.Map;
-
-import clondike.Card;
 import clondike.Foundation;
 import clondike.Game;
 import clondike.Suite;
