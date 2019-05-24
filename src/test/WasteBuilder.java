@@ -3,7 +3,6 @@ package test;
 import java.util.Stack;
 
 import clondike.Card;
-import clondike.Pile;
 import clondike.Waste;
 
 public class WasteBuilder extends CardStackBuilder {
